@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 
 app=Flask(__name__)
 
@@ -6,25 +6,25 @@ app=Flask(__name__)
 
 @app.route('/')
 def home():
-    return 'my home page'
+    return render_template('index.html')
 
 
 # products route
 @app.route('/products')
 def products():
-    return 'My products page'
+    return render_template('products.html')
 
 
 # sales route
 @app.route('/sales')
 def sales():
-    return 'My sales page'
+    return render_template('sales.html')
 
 
 # stock route
 @app.route('/stock')
 def stock():
-    return 'My stock page'
+    return render_template('stock.html')
 
 
 app.run()
