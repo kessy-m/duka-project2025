@@ -33,28 +33,28 @@ curr=connect.cursor()
 
 # task
 # store in a function
-# def fetch_products():
-#     curr.execute('select * from products;')
-#     prods=curr.fetchall()
-#     return prods
+def fetch_products():
+    curr.execute('select * from products;')
+    prods=curr.fetchall()
+    return prods
 
 # prods=fetch_products()
 # print(prods)
 
 
-# def fetch_sales():
-#     curr.execute('select * from sales;')
-#     my_sales=curr.fetchall()
-#     return my_sales
+def fetch_sales():
+    curr.execute('select * from sales;')
+    my_sales=curr.fetchall()
+    return my_sales
 
 # my_sales=fetch_sales()
 # print(my_sales)
 
 
-# def fetch_stock():
-#     curr.execute('select * from stock;')
-#     my_stock=curr.fetchall()
-#     return my_stock
+def fetch_stock():
+    curr.execute('select * from stock;')
+    my_stock=curr.fetchall()
+    return my_stock
 
 # my_stock=fetch_stock()
 # print(my_stock)
@@ -68,23 +68,23 @@ def fetch_data(table_name):
     return data
 
 # call the speficic table
-products=fetch_data('products')
-print(products)
+# products=fetch_data('products')
+# print(products)
 
-sales=fetch_data('sales')
-print(sales)
+# sales=fetch_data('sales')
+# print(sales)
 
-stock=fetch_data('stock')
-print(stock)
+# stock=fetch_data('stock')
+# print(stock)
 
 
 
 # insert products
-curr.execute("insert into products(name,buying_price,selling_price)values('Avocado',30.00,50.00);")
-connect.commit()
+# curr.execute("insert into products(name,buying_price,selling_price)values('Avocado',30.00,50.00);")
+# connect.commit()
 
-products=fetch_data('products')
-print(products)
+# products=fetch_data('products')
+# print(products)
 
 # insert products using a function
 # def insert_products():
@@ -97,10 +97,10 @@ print(products)
 # print(products)
 
 # insert products using place values remember to use a parameter
-# def insert_products(values):
-#     querry="insert into products(name,buying_price,selling_price)values(%s,%s,%s)"
-#     curr.execute(values,querry)
-#     connect.commit()
+def insert_products(values):
+    querry="insert into products(name,buying_price,selling_price)values(%s,%s,%s)"
+    curr.execute(values,querry)
+    connect.commit()
 
 # new_product=('Baking powder',50.00,80.00)
 # insert_products(new_product)
@@ -109,10 +109,10 @@ print(products)
 
 
 # # insert sales
-# def insert_sales(values):
-#     querry="insert into sales(pid,quantity,created_at)values(%s,%s,now())"
-#     curr.execute(values,querry)
-#     connect.commit()
+def insert_sales(values):
+    querry="insert into sales(pid,quantity,created_at)values(%s,%s,now())"
+    curr.execute(values,querry)
+    connect.commit()
 
 # new_sale=(3,10)
 # insert_sales(new_sale)
@@ -120,10 +120,10 @@ print(products)
 # print(products)
 
 # insert stock
-# def insert_stock(values):
-#     querry="insert into stock(pid,stock_quantity)values(%s,%s)"
-#     curr.execute(values,querry)
-#     connect.commit()
+def insert_stock(values):
+    querry="insert into stock(pid,stock_quantity)values(%s,%s)"
+    curr.execute(values,querry)
+    connect.commit()
 
 # new_stock=(2,15)
 # insert_stock(new_stock)
@@ -139,9 +139,9 @@ def product_profit():
     profit=curr.fetchall()
     return profit
 
-my_profit=product_profit()
-print('these are my profit')
-print(my_profit)
+# my_profit=product_profit()
+# print('these are my profit')
+# print(my_profit)
 
 
 # querry to get sales per product
@@ -152,9 +152,9 @@ def sales_product():
     sales=curr.fetchall()
     return sales
 
-my_sales=sales_product()
-print('these are my sales')
-print(my_sales)
+# my_sales=sales_product()
+# print('these are my sales')
+# print(my_sales)
 
 
 
