@@ -99,7 +99,7 @@ def fetch_data(table_name):
 # insert products using place values remember to use a parameter
 def insert_products(values):
     querry="insert into products(name,buying_price,selling_price)values(%s,%s,%s)"
-    curr.execute(values,querry)
+    curr.execute(querry,values)
     connect.commit()
 
 # new_product=('Baking powder',50.00,80.00)
@@ -111,7 +111,7 @@ def insert_products(values):
 # # insert sales
 def insert_sales(values):
     querry="insert into sales(pid,quantity,created_at)values(%s,%s,now())"
-    curr.execute(values,querry)
+    curr.execute(querry,values)
     connect.commit()
 
 # new_sale=(3,10)
@@ -122,7 +122,7 @@ def insert_sales(values):
 # insert stock
 def insert_stock(values):
     querry="insert into stock(pid,stock_quantity)values(%s,%s)"
-    curr.execute(values,querry)
+    curr.execute(querry,values)
     connect.commit()
 
 # new_stock=(2,15)
