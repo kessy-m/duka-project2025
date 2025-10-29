@@ -57,17 +57,20 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form>
+                    <form action="/add_sales" method="post">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">product id</label>
-                            <input type="number" class="form-control" name="product_id" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                            <label for="pid">choose a product:</label>
+                            <select name="product_id" id="pid">
+                                {% for product in prods_1 %}
+                                <option value={{product[0]}}>{{product[1]}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label for="exampleInputPassword1" class="form-label">stock</label>
-                            <input type="number" class="form-control" name="stock" id="exampleInputPassword1">
+                            <label for="exampleInputPassword1" class="form-label">quantity</label>
+                            <input type="number" class="form-control" name="quantity">
                         </div>
-                        
+
                         <button type="submit" class="btn btn-primary">Add sale</button>
                     </form>
                 </div>
