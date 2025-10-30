@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="//cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css">
     <title>Document</title>
 </head>
 
@@ -31,6 +32,9 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/stock">stock</a>
+                        </li>
+                         <li class="nav-item">
+                            <a class="nav-link" href="/dashboard">Dashboard</a>
                         </li>
                     </ul>
                 </div>
@@ -58,13 +62,16 @@
                 <div class="modal-body">
                     <form action="/add_stock" method="post">
                         <div class="mb-3">
-                            <label for="exampleInputEmail1" class="form-label">product id</label>
-                            <input type="number" class="form-control" name="product_id" id="exampleInputEmail1"
-                                aria-describedby="emailHelp">
+                            <label for="pid">select a product:</label>
+                            <select name="product_id" id="pid">
+                                {% for product in prods_2 %}
+                                <option value={{product[0]}}>{{product[1]}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
                         <div class="mb-3">
                             <label for="exampleInputPassword1" class="form-label">stock quantity</label>
-                            <input type="number" class="form-control" name="s_quantity" id="exampleInputPassword1">
+                            <input type="number" class="form-control" name="s_quantity">
                         </div>
                         <button type="submit" class="btn btn-primary">Add stock</button>
                     </form>
@@ -78,7 +85,7 @@
     </div>
 
     <div>
-        <table class="table">
+        <table class="display" id="myTable">
             <thead>
                 <tr>
                     <th scope="col">stock_id</th>
@@ -101,6 +108,11 @@
     </div>
 
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script src="//cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
@@ -108,6 +120,10 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
+
+    <script>
+        let table = new DataTable('#myTable');
+    </script>
 </body>
 
 </html>

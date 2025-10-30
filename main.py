@@ -59,8 +59,9 @@ def add_sales():
 @app.route('/stock')
 def stock():
     my_stock=fetch_data('stock')
+    my_products=fetch_data('products')
     # print(my_stock)
-    return render_template('stock.html',stock_1=my_stock)
+    return render_template('stock.html',stock_1=my_stock,prods_2=my_products)
 
 
 # add stock route
@@ -73,6 +74,12 @@ def add_stock():
         insert_stock(new_stock)
         return redirect(url_for('stock'))
     return redirect(url_for('stock'))
+
+
+#dashboard route
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
 
 
 app.run(debug=True)
