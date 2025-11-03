@@ -152,6 +152,10 @@ def sales_product():
     sales=curr.fetchall()
     return sales
 
+# querry to get profit per day
+def profit_per_day():
+    querry='select product.name,product.id,sum(())'
+
 # my_sales=sales_product()
 # print('these are my sales')
 # print(my_sales)
