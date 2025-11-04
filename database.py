@@ -152,14 +152,17 @@ def sales_product():
     sales=curr.fetchall()
     return sales
 
-# querry to get profit per day
-def profit_per_day():
-    querry='select product.name,product.id,sum(())'
+# querry to get sales per day
+def sales_per_day():
+    querry=' select date(s.created_at)as day, sum(p.selling_price * s.quantity)as total_sales from sales as s ' \
+    'join products as p on s.pid=p.id group by date(s.created_at) order by date(s.created_at);'
+    curr.execute(querry)
+    total_sales=curr.fetchall()
+    return total_sales
 
 # my_sales=sales_product()
 # print('these are my sales')
 # print(my_sales)
-
 
 
 
