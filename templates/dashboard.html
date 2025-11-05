@@ -56,6 +56,9 @@
             <div class="col-6">
                 <canvas id="bar-chart1" width="800" height="450"></canvas>
             </div>
+            <div class="col-6">
+                <canvas id="line-chart2" width="800" height="450"></canvas>
+            </div>
 
         </div>
 
@@ -76,66 +79,92 @@
         new Chart(document.getElementById("bar-chart"), {
             type: 'bar',
             data: {
-                labels: {{p_name | safe}},
-                datasets: [
-                    {
-                        label: "profit",
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        data: {{p_profit | safe}},
+                labels: {{ p_name | safe}},
+            datasets: [
+            {
+                label: "profit",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: {{ p_profit | safe}},
                     }
-                ]
+        ]
             },
             options: {
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: 'Profit per product'
-                }
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Profit per product'
             }
+        }
         });
 
         // line chart
         new Chart(document.getElementById("line-chart"), {
             type: 'line',
             data: {
-                labels: {{dates | safe}},
-                datasets: [{
-                    data: {{d_sales | safe}},
-                    label: "sales",
-                    borderColor: "#3e95cd",
-                    fill: false
+                labels: {{ dates | safe}},
+            datasets: [{
+                data: {{ d_sales | safe}},
+            label: "sales",
+            borderColor: "#3e95cd",
+            fill: false
             }]
 
-            },     
-    options: {
-                title: {
-                    display: true,
-                    text: 'sales per day'
-                }
+            },
+            options: {
+            title: {
+                display: true,
+                text: 'sales per day'
             }
+        }
         });
 
-           // Bar chart
+        // Bar chart
         new Chart(document.getElementById("bar-chart1"), {
             type: 'bar',
             data: {
-                labels: {{s_name | safe}},
-                datasets: [
-                    {
-                        label: "Sales",
-                        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
-                        data: {{s_product | safe}},
+                labels: {{ s_name | safe}},
+            datasets: [
+            {
+                label: "Sales",
+                backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
+                data: {{ s_product | safe}},
                     }
-                ]
+        ]
             },
             options: {
-                legend: { display: false },
-                title: {
-                    display: true,
-                    text: 'Sales per product'
-                }
+            legend: { display: false },
+            title: {
+                display: true,
+                text: 'Sales per product'
             }
+        }
         });
+
+
+        // line chart
+        new Chart(document.getElementById("line-chart2"), {
+            type: 'line',
+            data: {
+                labels: {{ date_profit | safe}},
+            datasets: [{
+                data: {{ d_profit | safe}},
+            label: "profit",
+            borderColor: "#3e95cd",
+            fill: false
+            }]
+
+            },
+            options: {
+            title: {
+                display: true,
+                text: 'profit per day'
+            }
+        }
+        });
+
+
+
+
 
     </script>
 

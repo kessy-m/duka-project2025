@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request,redirect,url_for
-from database import fetch_data,insert_products,insert_sales,insert_stock,product_profit,sales_product,sales_per_day
+from database import fetch_data,insert_products,insert_sales,insert_stock,product_profit,sales_product,sales_per_day,profit_per_day
 
 app=Flask(__name__)
 
@@ -103,11 +103,23 @@ def dashboard():
         dates.append(str(i[0]))
         day_sales.append(float(i[1]))
 
+
+ # profit per day
+    my_profit=profit_per_day()
+    date_profit=[]
+    day_profit=[]
+    for x in my_profit:
+        dates.append(str(x[0]))
+        day_profit.append(float(x[1]))
+
     return render_template('dashboard.html',p_name=product_names,p_profit=prod_profit,s_name=sale_name,
-    s_product=sale_product,dates=dates,d_sales=day_sales)
+    s_product=sale_product,dates=dates,d_sales=day_sales,date_profit=date_profit,d_profit=day_profit)
 
-   
 
+# register route
+@app.route('/register')
+def register():
+    return render_template('register.html')
 
 
 app.run(debug=True)
