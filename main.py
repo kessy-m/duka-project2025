@@ -1,5 +1,5 @@
 from flask import Flask,render_template,request,redirect,url_for
-from database import fetch_data,insert_products,insert_sales,insert_stock,product_profit,sales_product,sales_per_day,profit_per_day
+from database import fetch_data,insert_products,insert_sales,insert_stock,product_profit,sales_product,sales_per_day,profit_per_day,total_sales
 
 app=Flask(__name__)
 
@@ -86,6 +86,8 @@ def dashboard():
         product_names.append(i[0])
         prod_profit.append(float(i[2]))
 
+   
+
 # sales per product
     all_sales=sales_product()
     sale_name=[]
@@ -112,8 +114,10 @@ def dashboard():
         dates.append(str(x[0]))
         day_profit.append(float(x[1]))
 
+    my_total_sales=total_sales()
+
     return render_template('dashboard.html',p_name=product_names,p_profit=prod_profit,s_name=sale_name,
-    s_product=sale_product,dates=dates,d_sales=day_sales,date_profit=date_profit,d_profit=day_profit)
+    s_product=sale_product,dates=dates,d_sales=day_sales,date_profit=date_profit,d_profit=day_profit,my_total_sales=my_total_sales)
 
 
 # register route

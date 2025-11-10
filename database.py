@@ -176,4 +176,10 @@ def profit_per_day():
 
 
 
-
+# function to get total sales
+def total_sales():
+    querry='select sum(selling_price*quantity) from products join sales on sales.pid=products.id;'
+    curr.execute(querry)
+    data=curr.fetchone()
+    return data
+print(total_sales())
